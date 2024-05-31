@@ -1,0 +1,90 @@
+* {  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+}
+html,
+body,
+.wrapper {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0 24px;
+    background-color: #1a001f;
+}
+
+.login-card {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin: 0 20px;
+    padding: 220px;
+    border-radius: 1.25rem;
+    background: white;
+    text-align: center;
+}
+
+.login-card h2 {
+   
+    font-size: 36px;
+    font-weight: 600;
+    margin: 12px;
+}
+
+.login-card h3 {
+    color: gray;
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.login-form {
+    width: 100%; 
+    margin: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.login-form input,
+.login-form {
+    width: 100%;
+    height: 50px;
+}
+
+.login-form input {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 20px;
+    padding: 0 25px;
+    border-radius: 14px;
+    transition: all 0.375s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form input:hover {
+    border: 2px solid #460c75;
+}  
+
+.login-form button {
+    cursor: pointer;
+    width: 100%;
+    padding: 16px;
+    border-radius: 25px;
+    background-color: #460c75;
+    color: white;
+    border: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+}
+
+.login-card button:hover {
+    background: #5f0da1;
+}
