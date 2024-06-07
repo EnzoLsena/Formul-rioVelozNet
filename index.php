@@ -1,29 +1,47 @@
 <?php
 
-// print_r($_POST);
-
 // Obtém os dados do formulário
 $email = $_POST['email'] ?? "";
 $senha = $_POST['senha'] ?? "";
 
+if ($email != "" && $senha != "") {
+    // Tenta incluir o arquivo de configuração
+    if (!file_exists('config.php')) {
+        die('Arquivo de configuração ausente');
+    }
 
-if($email != "" && $senha != "") {
     include_once('config.php'); 
 
-    // Consulta para verificar se o email e senha correspondem a um registro na tabela de login
-    $sql = "SELECT * FROM login WHERE email = '$email' AND senha = '$senha'";
-    $resultado = $conexao->query($sql);
+    // Verifica se $conexao está definido e é uma conexão válida
+    if (!isset($conexao) || !$conexao instanceof mysqli) {
+        die('Erro de conexão com o banco de dados');
+    }
 
-    // Verifica se encontrou um registro correspondente
-    if ($resultado->num_rows == 1) {
-        // Login válido
-        echo "Login bem-sucedido! Redirecionando...";
-        // Redireciona para a próxima página após o login
-        header("Location: formulario.php");
-        exit();
+    // Consulta para verificar se o email e senha correspondem a um registro na tabela de login
+    $sql = "SELECT * FROM login WHERE email = ? AND senha = ?";
+    
+    // Preparar a consulta para evitar SQL Injection
+    if ($stmt = $conexao->prepare($sql)) {
+        $stmt->bind_param('ss', $email, $senha);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        // Verifica se encontrou um registro correspondente
+        if ($resultado->num_rows == 1) {
+            // Login válido
+            echo "Login bem-sucedido! Redirecionando...";
+            // Redireciona para a próxima página após o login
+            header("Location: formulario.php");
+            exit();
+        } else {
+            // Login inválido
+            echo "Email ou senha incorretos.";
+        }
+
+        // Fecha a declaração
+        $stmt->close();
     } else {
-        // Login inválido
-        echo "Email ou senha incorretos.";
+        echo "Erro na preparação da consulta: " . $conexao->error;
     }
 
     // Fecha a conexão com o banco de dados
@@ -31,6 +49,7 @@ if($email != "" && $senha != "") {
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
