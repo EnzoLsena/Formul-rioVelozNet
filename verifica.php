@@ -2,10 +2,10 @@
 
 date_default_timezone_set('America/Sao_Paulo');
 
-$host = 'localhost';
-$dbname = 'veloznet';
-$username = 'root';
-$password = '';
+$host = 'bdcloud.mysql.database.azure.com';
+$dbname = 'bdcloud';
+$username = 'Cloud1213';
+$password = 'Pa$$w0rd123';
 
 global $pdo;
 try {
