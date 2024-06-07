@@ -3,9 +3,9 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 $host = 'bdcloud.mysql.database.azure.com';
-$dbname = 'bdcloud';
+$dbname = 'bancoveloznet';
 $username = 'Cloud1213';
-$password = 'Pa$$w0rd123';
+$password = 'Enzo@1280';
 
 global $pdo;
 try {
