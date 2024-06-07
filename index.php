@@ -10,7 +10,7 @@ if ($email != "" && $senha != "") {
         die('Arquivo de configuração ausente');
     }
 
-    include_once('cformulario.php'); 
+    include_once('formulario.php'); 
 
     // Verifica se $conexao está definido e é uma conexão válida
     if (!isset($conexao) || !$conexao instanceof mysqli) {
