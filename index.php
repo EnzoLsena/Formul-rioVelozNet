@@ -6,11 +6,11 @@ $senha = $_POST['senha'] ?? "";
 
 if ($email != "" && $senha != "") {
     // Tenta incluir o arquivo de configuração
-    if (!file_exists('config.php')) {
+    if (!file_exists('formulario.php')) {
         die('Arquivo de configuração ausente');
     }
 
-    include_once('config.php'); 
+    include_once('cformulario.php'); 
 
     // Verifica se $conexao está definido e é uma conexão válida
     if (!isset($conexao) || !$conexao instanceof mysqli) {
